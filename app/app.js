@@ -3,7 +3,8 @@ const Application = function() {
   this.tuner = new Tuner(this.a4)
   this.notes = new Notes('.notes', this.tuner)
   this.meter = new Meter('.meter')
-  this.frequencyBars = new FrequencyBars('.frequency-bars')
+  this.game = new Game(this.tuner);
+  // this.frequencyBars = new FrequencyBars('.frequency-bars')
   this.update({ name: 'A', frequency: this.a4, octave: 4, value: 69, cents: 0 })
 }
 
@@ -17,7 +18,7 @@ Application.prototype.start = function() {
   const self = this
 
   this.tuner.onNoteDetected = function(note) {
-    if (self.notes.isAutoMode) {
+    if (self.notes.isAutoMode) { 
       if (self.lastNote === note.name) {
         self.update(note)
       } else {
@@ -48,7 +49,7 @@ Application.prototype.start = function() {
     })
   })
 
-  this.updateFrequencyBars()
+  // this.updateFrequencyBars()
 }
 
 Application.prototype.updateFrequencyBars = function() {
@@ -62,6 +63,7 @@ Application.prototype.updateFrequencyBars = function() {
 Application.prototype.update = function(note) {
   this.notes.update(note)
   this.meter.update((note.cents / 50) * 45)
+  this.game.update(note)
 }
 
 // noinspection JSUnusedGlobalSymbols

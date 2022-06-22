@@ -14,6 +14,17 @@ body {
   -moz-user-select: none;
 }
 
+.game {
+  margin: auto;
+  width: 400px;
+  position: fixed;
+  top: 80%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size:5em; 
+  font-weight:bold;
+}
 .notes {
   margin: auto;
   width: 400px;
